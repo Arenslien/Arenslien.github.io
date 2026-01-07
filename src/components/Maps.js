@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { Grass } from "./Grass";
+import { Road } from "./Road";
 import { Tree } from "./Tree";
+import { Car } from "./Car";
 
 export const map = new THREE.Group();
 
@@ -12,6 +14,18 @@ export const metadata = [
       { tileIndex: 2, height: 30 },
       { tileIndex: -5, height: 50 },
     ],
+  },
+  {
+    type: "car",
+    direction: false,
+    speed: 1,
+    vehicles: [{ initialTileIndex: 2, color: 0xff0000 }],
+  },
+  {
+    type: "truck",
+    direction: true,
+    speed: 0,
+    vehicles: [{ initialTileIndex: 4, color: 0x00ff00 }],
   },
 ];
 
@@ -31,6 +45,21 @@ export function addRows() {
       rowData.trees.forEach(({ tileIndex, height }) => {
         const tree = Tree(tileIndex, height);
         row.add(tree);
+      });
+
+      map.add(row);
+    }
+
+    if (rowData.type === "car") {
+      const row = Road(rowIndex);
+
+      rowData.vehicles.forEach((vehicle) => {
+        const car = Car(
+          vehicle.initialTileIndex,
+          rowData.direction,
+          vehicle.color
+        );
+        row.add(car);
       });
 
       map.add(row);
