@@ -10,7 +10,9 @@ export function Grass(rowIndex) {
     new THREE.MeshLambertMaterial({ color: 0xbaf455 })
   );
 
-  foundation.position.z = 1.5;
+  // foundation.position.x = 0; 
+  // foundation.position.y = 0;
+  foundation.position.z = 1.5; // 높이 조절
   grass.add(foundation);
 
   return grass;
