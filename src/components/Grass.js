@@ -13,6 +13,7 @@ export function Grass(rowIndex) {
   // foundation.position.x = 0; 
   // foundation.position.y = 0;
   foundation.position.z = 1.5; // 높이 조절
+  foundation.receiveShadow = true;
   grass.add(foundation);
 
   return grass;
