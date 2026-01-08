@@ -25,7 +25,7 @@ export function animateVehicles() {
           ref.position.x =
             ref.position.x < beginningOfRow
               ? endOfRow
-              : ref.position.x + rowData.speed * delta;
+              : ref.position.x - rowData.speed * delta;
         }
       });
     }
