@@ -3,6 +3,7 @@ import { Grass } from "./Grass";
 import { Road } from "./Road";
 import { Tree } from "./Tree";
 import { Car } from "./Car";
+import { Truck } from "./Truck";
 
 export const map = new THREE.Group();
 
@@ -60,6 +61,21 @@ export function addRows() {
           vehicle.color
         );
         row.add(car);
+      });
+
+      map.add(row);
+    }
+
+    if (rowData.type === "truck") {
+      const row = Road(rowIndex);
+
+      rowData.vehicles.forEach((vehicle) => {
+        const truck = Truck(
+          vehicle.initialTileIndex,
+          rowData.direction,
+          vehicle.color
+        );
+        row.add(truck);
       });
 
       map.add(row);
