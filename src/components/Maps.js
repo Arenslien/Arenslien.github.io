@@ -31,8 +31,10 @@ export const metadata = [
 ];
 
 export function initializeMap() {
-  const grass = Grass(0);
-  map.add(grass);
+  for (let rowIndex = 0; rowIndex > -5; --rowIndex) {
+    const grass = Grass(rowIndex);
+    map.add(grass);
+  }
   addRows();
 }
 
