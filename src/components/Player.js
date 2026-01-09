@@ -4,6 +4,8 @@ import { endsUpInValidPosition } from "../utilities/endsUpInValidPosition";
 export const player = Player();
 
 function Player() {
+  const player = new THREE.Group();
+
   const body = new THREE.Mesh(
     new THREE.BoxGeometry(15, 15, 15), // 20
     new THREE.MeshLambertMaterial({
@@ -15,8 +17,12 @@ function Player() {
   body.castShadow = true;
   body.receiveShadow = true;
   body.position.z = 10;
+  player.add(body);
 
-  return body;
+  const playerContainer = new THREE.Group();
+  playerContainer.add(player);
+
+  return playerContainer;
 }
 
 export const position = {
