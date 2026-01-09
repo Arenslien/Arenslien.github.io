@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { endsUpInValidPosition } from "../utilities/endsUpInValidPosition";
 
 export const player = Player();
 
@@ -11,9 +12,9 @@ function Player() {
     })
   );
 
-  body.position.z = 10;
   body.castShadow = true;
   body.receiveShadow = true;
+  body.position.z = 10;
 
   return body;
 }
@@ -26,6 +27,16 @@ export const position = {
 export const movesQueue = [];
 
 export function queueMove(direction) {
+  const isValidMove = endsUpInValidPosition(
+    {
+      rowIndex: position.currentRow,
+      tileIndex: position.currentTile,
+    },
+    [...movesQueue, direction]
+  );
+
+  if (!isValidMove) return;
+
   movesQueue.push(direction);
 }
 
