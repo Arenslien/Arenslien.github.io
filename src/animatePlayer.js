@@ -1,11 +1,11 @@
 import * as THREE from "three";
-import { player, position, movesQueue, stepCompleted } from "./components/Player";
+import { player, position, movesQueue, stepCompleted, gameover } from "./components/Player";
 import { tileSize } from "./constants";
 
 const moveClock = new THREE.Clock(false);
 
 export function animatePlayer() {
-  if (!movesQueue.length) return;
+  if (!movesQueue.length || gameover) return;
 
   if (!moveClock.running) moveClock.start();
 

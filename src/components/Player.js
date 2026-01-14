@@ -4,6 +4,8 @@ import { metadata as rows, addRows } from "./Map";
 
 export const player = Player();
 
+export let gameover = false;  
+
 function Player() {
   const player = new THREE.Group();
 
@@ -45,6 +47,7 @@ export function initializePlayer() {
 
   // Clear the moves queue
   movesQueue.length = 0;
+  gameover = false;
 }
 
 export function queueMove(direction) {
@@ -74,4 +77,8 @@ export function stepCompleted() {
 
   const scoreDOM = document.getElementById("score");
   if (scoreDOM) scoreDOM.innerText = position.currentRow.toString();
+}
+
+export function setGameOver(flag) {
+  gameover = flag;
 }

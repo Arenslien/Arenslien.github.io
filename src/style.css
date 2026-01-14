@@ -62,7 +62,7 @@ body {
   padding: 20px;
 }
 
-button {
+#retry {
   background-color: red;
   padding: 20px 50px 20px 50px;
   font-family: inherit;
