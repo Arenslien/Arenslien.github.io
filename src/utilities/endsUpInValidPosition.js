@@ -1,6 +1,6 @@
 import { calculateFinalPosiion } from "./calculateFinalPosition";
 import { minTileIndex, maxTileIndex } from "../constants";
-import { metadata as rows } from "../components/Maps";
+import { metadata as rows } from "../components/Map";
 
 export function endsUpInValidPosition(currentPosition, moves) {
   // Calculate where the player would end up after the move
